@@ -4,7 +4,6 @@ import unittest
 
 import qualifier
 
-
 class TestQuoteCreation(unittest.TestCase):
 
     def setUp(self):
@@ -122,11 +121,12 @@ class TestQuoteCreation(unittest.TestCase):
 
         captured_output = io.StringIO()
         sys.stdout = captured_output
-
+        
         qualifier.run_command(f'quote "{test_case}"')
         qualifier.run_command(f'quote "{test_case}"')
 
         output = captured_output.getvalue()
+        print(output)
         self.assertEqual(output, expected_output)
 
         sys.stdout = sys.__stdout__
